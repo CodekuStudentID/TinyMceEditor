@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DebugController;
+use App\Http\Controllers\EditorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +19,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/debug-api-key', [DebugController::class, 'debug'])->name('debug.debug');
+
+Route::get('/text/editor', [EditorController::class, 'index'])->name('editor.index');
+Route::post('/editor/create-post', [EditorController::class, 'store'])->name('editor.store');
 require __DIR__.'/auth.php';
